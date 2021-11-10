@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link href='http://fonts.googleapis.com/css?family=Varela+Round|Terminal+Dosis:400,700,600' rel='stylesheet'
+    type='text/css'>
+  <title>Color Thief</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>Color Thief</h1>
+      <h4><a href="http://lokeshdhakar.com">by Lokesh Dhakar and upload functionality by Jordaar</a></small></h4>
+      <p>A script for grabbing the dominant color or color palette from an image. Uses Javascript and the canvas tag to
+        make it happen.</p>
+      </p>
+    </header>
+
+    <div id="main" role="main">
+
+    </div>
+  </div>
+  <!--! end of #container -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="js/libs/jquery.lettering.js"></script>
+  <script src="js/libs/mustache.js"></script>
+  <script src="js/libs/quantize.js"></script>
+  <script src="js/color-thief.js"></script>
+
+  <!-- PLACEHOLDER FOR THE IMAGE -->
+  <script id='template' type='text/x-mustache'>
+<input id="uploadImage" type="file" name="myPhoto" onchange="PreviewImage();" />
+<div class="imageSection">
+    <div class="imageWrap">
+      <img class="targetImage" id="uploadPreview" data-colorcount="{{colorCount}}" />
+    </div>
+    <div class="colors">
+      <div class="function dominantColor">
+        <h3>Dominant Color</h3>
+        <div class="swatches"></div>
+      </div>
+      <div class="function medianCutPalette clearfix">
+        <h3>Palette</h3>
+        <div class="swatches"></div>
+      </div>
+    </div>
+</div>
+
+</script>
+
+  <!-- PREVIEW OF THE IMAGE -->
+  <script type="text/javascript">
+    function PreviewImage() {
+      oFReader = new FileReader();
+      oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+      oFReader.onload = function (oFREvent) {
+        document.getElementById("uploadPreview").src = oFREvent.target.result;
+      };
+    };
+  </script>
+  <!-- COLOR THIEF DOES ITS MAGIC HERE -->
+  <script src="index.js"></script>
+  <script src="js/libs/socialite.min.js"></script>
+</body>
+</html>
